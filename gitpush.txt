@@ -1,0 +1,5 @@
+git status will give u the status of which files are not updated to repository 
+
+git add . will ready all file to push
+
+git push origin <branch name> will push all the changes to your git repository

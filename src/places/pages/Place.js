@@ -42,21 +42,28 @@ const Place = () => {
         },
         isValid: false
     })
+    
 
-    const inputHandler = useCallback((id, value, isValid)=>{ 
-        dispatch({
-            type:'input_change',
-            value: value,
-            inputId: id,
-            isValid: isValid
-        });
-    }, []);
+const inputHandler = useCallback((id, value, isValid)=>{ 
+    dispatch({
+        type:'input_change',
+        value: value,
+        inputId: id,
+        isValid: isValid
+    });
+}, []);
 
-    return <form className="place-form">
-        <Input id="title" element="input" type="text" label="Title" errorText={'please enter title'} validators={[Validator_require()]} onInput={inputHandler}/>
-        <Input id="description" element="textarea" label="Description" errorText={'please enter description.(minimum 5)'} validators={[VALIDATOR_MINLENGTH(5)]} onInput={inputHandler}/>
-        <Button type="submit" disabled={!formState.isValid}> Submit </Button>
-    </form>
+const formSubmitHandler = event => {
+    event.preventDefault();
+    console.log(formState.inputs)
+}
+
+return <form className="place-form" onSubmit={formSubmitHandler}>
+    <Input id="title" element="input" type="text" label="Title" errorText={'please enter title'} validators={[Validator_require()]} onInput={inputHandler}/>
+    <Input id="description" element="textarea" label="Description" errorText={'please enter description.(minimum 5)'} validators={[VALIDATOR_MINLENGTH(5)]} onInput={inputHandler}/>
+    <Input id="address" element="input" label="Address" errorText={'please enter valid address'} validators={[(Validator_require())]} onInput={inputHandler}/>
+    <Button type="submit" disabled={!formState.isValid} title={!formState.isValid}> Submit </Button>
+</form>
 }
 
 export default Place;
