@@ -1,8 +1,8 @@
-import React, {useCallback, useReducer} from 'react';
+import React, { useCallback, useReducer } from 'react';
 
 import Input from '../../shared/FormElement/Input';
 import Button from '../../shared/FormElement/Button';
-import { Validator_require} from '../../shared/util/validators';
+import { Validator_require, VALIDATOR_MINLENGTH} from '../../shared/util/validators';
 import '../css/UserPlace.css'
 
 const formReducer = (state, action) => {
@@ -19,7 +19,7 @@ const formReducer = (state, action) => {
                 ...state,
                 inputs: {
                     ...state.inputs,
-                    [action.isValid]: {value: action.value, isValid: action.isValid}
+                    [action.inputId]: {value: action.value, isValid: action.isValid}
                 },
                 isValid: formIsValid
             }
@@ -54,7 +54,7 @@ const Place = () => {
 
     return <form className="place-form">
         <Input id="title" element="input" type="text" label="Title" errorText={'please enter title'} validators={[Validator_require()]} onInput={inputHandler}/>
-        <Input id="description" element="textarea" label="Discription" errorText={'please enter description.'} validators={[Validator_require()]} onInput={inputHandler}/>
+        <Input id="description" element="textarea" label="Description" errorText={'please enter description.(minimum 5)'} validators={[VALIDATOR_MINLENGTH(5)]} onInput={inputHandler}/>
         <Button type="submit" disabled={!formState.isValid}> Submit </Button>
     </form>
 }
