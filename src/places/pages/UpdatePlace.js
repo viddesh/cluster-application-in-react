@@ -42,11 +42,11 @@ const UpdatePlace = () => {
         {
             title: {
                 value: identifiedPlace.title,
-                isValid: false
+                isValid: true
             },
             description: {
                 value: identifiedPlace.description,
-                isValid: false
+                isValid: true
             }
         }, true)
 
