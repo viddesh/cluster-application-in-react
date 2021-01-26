@@ -55,9 +55,13 @@ const UpdatePlace = () => {
             <h2>Place is not found!</h2>
         </div>
     }
-    return <form className="place-form">
-        <Input id="title" element="input" type="text" label="title" validators={[Validator_require()]} errorText="place enter valid input" onInput={inputHandler} value={formState.inputs.title.value} isValid={formState.inputs.title.isValid}/>
-        <Input id="description" element="textarea" label="title" validators={[VALIDATOR_MINLENGTH(5)]} errorText="place enter valid description minlength 5" onInput={inputHandler} value={formState.inputs.description.value} isValid={formState.inputs.description.isValid} />
+    const updateHandler = event => {
+        event.preventDefault();
+        console.log(formState.inputs)
+    }
+    return <form className="place-form" onSubmit={updateHandler}>
+        <Input id="title" element="input" type="text" label="title" validators={[Validator_require()]} errorText="place enter valid input" onInput={inputHandler} initialValue={formState.inputs.title.value} initialValid={formState.inputs.title.isValid}/>
+        <Input id="description" element="textarea" label="title" validators={[VALIDATOR_MINLENGTH(5)]} errorText="place enter valid description minlength 5" onInput={inputHandler} initialValue={formState.inputs.description.value} initialValid={formState.inputs.description.isValid} />
         <Button type="submit" disabled={!formState.isValid}>Update</Button>
     </form>
 }
