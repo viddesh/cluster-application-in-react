@@ -66,4 +66,4 @@ const UpdatePlace = () => {
     </form> 
 }
 
-export default UpdatePlace;
+export default UpdatePlace; 
