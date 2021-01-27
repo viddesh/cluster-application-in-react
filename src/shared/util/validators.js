@@ -12,7 +12,7 @@ export const VALIDATOR_MINLENGTH = val => ({
 
 export const validate = (value, validators) => {
     let isValid = true;
-    for (const validator of validators) {
+    for (const validator of validators) { 
         if(validator.type === Validator_type_require)
             isValid = isValid && value.trim().length > 0;
         if (validator.type === VALIDATOR_TYPE_MINLENGTH)
