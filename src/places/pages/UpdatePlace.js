@@ -63,7 +63,7 @@ const UpdatePlace = () => {
         <Input id="title" element="input" type="text" label="title" validators={[Validator_require()]} errorText="place enter valid input" onInput={inputHandler} initialValue={formState.inputs.title.value} initialValid={formState.inputs.title.isValid}/>
         <Input id="description" element="textarea" label="title" validators={[VALIDATOR_MINLENGTH(5)]} errorText="place enter valid description minlength 5" onInput={inputHandler} initialValue={formState.inputs.description.value} initialValid={formState.inputs.description.isValid} />
         <Button type="submit" disabled={!formState.isValid}>Update</Button>
-    </form>
+    </form> 
 }
 
 export default UpdatePlace;
